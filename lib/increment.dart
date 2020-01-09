@@ -3,9 +3,13 @@ library increment;
 ///mutable
 class Increment{
   ///32bit signed int limit
-  static const int _lim = 0x7FFFFFFF;
+  static const int _defaultLim = 0x7FFFFFFF;
+
+  final int limit;
 
   int _index = 0;
 
-  int get next => _index == _lim ? _index = 0 : _index++;
+  Increment({this.limit = _defaultLim});
+
+  int get next => _index == limit ? _index = 0 : _index++;
 }

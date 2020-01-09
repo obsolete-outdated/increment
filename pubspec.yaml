@@ -1,6 +1,6 @@
 name: increment
 description: A 32 bit auto-increment used to distinguish requests/responses by a 'requestID' claim
-version: 1.0.0
+version: 1.0.1
 author: Subbotin Aleksei <darkandjeweled@gmail.com>
 homepage: https://github.com/Moonspeaker/increment
 
