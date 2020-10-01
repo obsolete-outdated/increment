@@ -1,15 +1,38 @@
 library increment;
 
-///mutable
 class Increment{
-  ///32bit signed int limit
-  static const int _defaultLim = 0x7FFFFFFF;
+  static const int _32bitSignedMax = 0x7fffffff;
 
-  final int limit;
+  int _currentMax = _32bitSignedMax;
+  int _currentValue = -1;
 
-  int _index = 0;
+  Increment({final int max = _32bitSignedMax}){
+    _currentMax = max;
+  }
 
-  Increment({this.limit = _defaultLim});
+  int get _reset {
+    _currentValue = 0;
+    return _currentValue;
+  }
 
-  int get next => _index == limit ? _index = 0 : _index++;
+  int get _increase {
+    _currentValue++;
+    return _currentValue;
+  }
+
+  int get next => _currentValue == _currentMax
+      ? _reset
+      : _increase;
+
+  int get value => _currentValue;
+  set value(final int newValue) => newValue >= _currentMax
+      ? _reset
+      : _currentValue = newValue;
+
+  int get max => _currentMax;
+  set max(final int newLimit) {
+    _currentMax = newLimit;
+    if(_currentValue >= newLimit)
+      _reset;
+  }
 }
