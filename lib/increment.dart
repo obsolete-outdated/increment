@@ -2,6 +2,7 @@ library increment;
 
 class Increment{
   static const int _32bitSignedMax = 0x7fffffff;
+  static const int _zero = 0;
 
   int _currentMax = _32bitSignedMax;
   int _currentValue = -1;
@@ -11,7 +12,7 @@ class Increment{
   }
 
   int get _reset {
-    _currentValue = 0;
+    _currentValue = _zero;
     return _currentValue;
   }
 
@@ -25,14 +26,15 @@ class Increment{
       : _increase;
 
   int get value => _currentValue;
-  set value(final int newValue) => newValue >= _currentMax
+  set value(final int newValue) => newValue >= _currentMax || newValue < _zero
       ? _reset
       : _currentValue = newValue;
 
   int get max => _currentMax;
-  set max(final int newLimit) {
-    _currentMax = newLimit;
-    if(_currentValue >= newLimit)
+  set max(final int newMax) {
+    assert(newMax >= _zero, "max cannot be less than zero");
+    _currentMax = newMax;
+    if(_currentValue >= newMax)
       _reset;
   }
 }

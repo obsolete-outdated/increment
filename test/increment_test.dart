@@ -12,6 +12,12 @@ void main() {
   });
 
   group('max', (){
+    test("zero max", (){
+      final Increment increment = Increment(max: 0);
+      expect(increment.next, equals(0));
+      expect(increment.next, equals(0));
+    });
+
     const int max = 10;
 
     test("reset", (){

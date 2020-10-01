@@ -1,4 +1,4 @@
-## [2.0.3] - Renamed "limit" to "max"
+## [2.0.4] - Renamed "limit" to "max"
 
 Current value and maximum now can be changed. Increment is now mutable.
 
