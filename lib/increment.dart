@@ -32,7 +32,6 @@ class Increment{
 
   int get max => _currentMax;
   set max(final int newMax) {
-    assert(newMax >= _zero, "max cannot be less than zero");
     _currentMax = newMax;
     if(_currentValue >= newMax)
       _reset;
